@@ -22,7 +22,8 @@ public class Repository {
         return null;
     }
 
-    public void addProduct(Product p){
+    public void addProduct(Product p) {
+
         repos.add(p);
     }
 }
