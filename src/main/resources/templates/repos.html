@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <title>Product Repository</title>
+</head>
+<body>
+<h1>All Products</h1>
+<p th:each="product : ${repos}" th:text="${product}"></p>
+</body>
+</html>
