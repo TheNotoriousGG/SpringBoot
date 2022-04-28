@@ -4,7 +4,7 @@
     <title>Add new product</title>
 </head>
 <body>
-<form th:action="@{'/add_product/form'}" th:object="${product}" method="post">
+<form th:action="@{'/product/add'}" th:object="${product}" method="post">
     Id: <input type="text" th:field="*{id}"/> <br>
     Title: <input type="text" th:field="*{title}"/> <br>
     Cost: <input type="number" th:field="*{cost}"/> <br>
