@@ -1,18 +1,18 @@
-package com.demerchyan.spring_boot.repository;
+package com.demerchyan.spring_boot.DAO.storeDAO;
 
+import com.demerchyan.spring_boot.DAO.IRepository;
 import com.demerchyan.spring_boot.model.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Slf4j
+
 @Transactional
 @Repository
-public class ProductRepository implements IRepository<Product> {
+public class ProductDAO implements IRepository<Product> {
     @PersistenceContext
     EntityManager em;
 
@@ -22,7 +22,7 @@ public class ProductRepository implements IRepository<Product> {
         product.setTitle(obj.getTitle());
         product.setCost(obj.getCost());
         em.persist(product);
-        return 1;
+        return 0;
     }
 
     @Override

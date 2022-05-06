@@ -1,4 +1,4 @@
-package com.demerchyan.spring_boot.repository;
+package com.demerchyan.spring_boot.DAO;
 
 import java.util.List;
 

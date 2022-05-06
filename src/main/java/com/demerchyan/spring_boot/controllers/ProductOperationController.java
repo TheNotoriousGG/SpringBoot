@@ -1,24 +1,22 @@
 package com.demerchyan.spring_boot.controllers;
 
 import com.demerchyan.spring_boot.model.Product;
-import com.demerchyan.spring_boot.repository.ProductRepository;
+import com.demerchyan.spring_boot.DAO.storeDAO.ProductDAO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Slf4j
 @Controller
 @RequestMapping("/product")
 public class ProductOperationController {
-    private final ProductRepository productRepos;
+    private final ProductDAO productRepos;
 
     @Autowired
-    public ProductOperationController(ProductRepository repos) {
+    public ProductOperationController(ProductDAO repos) {
         this.productRepos = repos;
     }
 
