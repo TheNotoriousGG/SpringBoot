@@ -1,37 +1,53 @@
 package com.demerchyan.spring_boot.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-@Data
-@Entity(name = "Product")
-@Component
-@NoArgsConstructor
+@Entity
+@Table(name = "Product", schema = "Store")
 public class Product {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column
+    @Column(name = "title")
     private String title;
-    @Column
-    private double cost;
 
+    @Column(name = "cost")
+    private int cost;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinTable(name = "Customer_Products",
-            joinColumns = @JoinColumn(name = "id_product"),
-            inverseJoinColumns = @JoinColumn(name = "id_customer"))
-    Set<Customer> customers1;
+    @ManyToMany(mappedBy = "products")
+    private List<Customer> customers = new ArrayList<>();
 
+    public Product() {
+    }
+
+    public Product(int id, String title, int cost) {
+        this.id = id;
+        this.title = title;
+        this.cost = cost;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return title;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
 }
-
